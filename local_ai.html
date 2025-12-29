@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mera Bhai - Local AI Brain</title>
+    <style>
+        body { background-color: #0b141a; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+        .box { background: #202c33; padding: 20px; border-radius: 10px; width: 80%; max-width: 600px; text-align: center; }
+        input { width: 70%; padding: 10px; border-radius: 5px; border: none; margin-top: 10px; }
+        button { padding: 10px 20px; background: #00a884; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        #response { margin-top: 20px; font-size: 1.2em; color: #e9edef; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>🤖 Gemini Nano Local Brain</h1>
+        <p>Currently running strictly inside Chrome (Privacy Mode)</p>
+        <input type="text" id="promptInput" placeholder="Bhai se kuch pooch...">
+        <button onclick="askBhai()">Ask Bhai</button>
+        <div id="response">Waiting...</div>
+    </div>
+
+    <script>
+        // The Prompt Engineering for the Bhai Persona
+        const systemPrompt = "You are a close friend (Bhai) of the user. Speak in a mix of Hindi and English (Hinglish). Be casual, use emojis, use slang like 'yaar', 'masti', 'scene'. Never be formal. Keep replies short and funny.";
+
+        async function askBhai() {
+            const input = document.getElementById('promptInput').value;
+            const display = document.getElementById('response');
+            
+            display.innerText = "Thinking... 🤔";
+
+            try {
+                // Check if AI is available in Chrome
+                if (!window.ai) {
+                    display.innerText = "❌ window.ai not found! Enable Gemini Nano flags in Chrome.";
+                    return;
+                }
+
+                // Create session
+                const session = await window.ai.createTextSession({
+                    initialPrompts: [{ role: "system", content: systemPrompt }]
+                });
+
+                // Generate response
+                const result = await session.prompt(input);
+                display.innerText = result;
+
+            } catch (e) {
+                display.innerText = "Error: " + e.message;
+            }
+        }
+    </script>
+</body>
+</html>

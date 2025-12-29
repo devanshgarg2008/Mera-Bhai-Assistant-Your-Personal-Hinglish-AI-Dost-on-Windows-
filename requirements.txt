@@ -1,0 +1,9 @@
+customtkinter
+speechrecognition
+pyttsx3
+pyaudio
+psutil
+pywhatkit
+google-generativeai
+pillow
+screen-brightness-control
