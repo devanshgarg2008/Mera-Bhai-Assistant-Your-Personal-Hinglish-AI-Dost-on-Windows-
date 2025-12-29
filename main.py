@@ -11,12 +11,12 @@ import speech_recognition as sr
 import tkinter as tk
 from tkinter import scrolledtext
 
-# --- 1. GEMINI AI SETUP ---
+#GEMINI AI SETUP
 # Model ko 'gemini-pro' rakha hai taaki 404 error na aaye
-genai.configure(api_key="AIzaSyBneFle5s6nY9uzTJd21Fmp-ASwrrtHock")
+genai.configure(api_key="Api Key do not reveal")
 model = genai.GenerativeModel('gemini-pro')
 
-# --- 2. VOICE ENGINE (Madhur Voice) ---
+#2. VOICE ENGINE (Madhur Voice)
 async def speak_bhai(text):
     if not text: return
     voice = "hi-IN-MadhurNeural" 
@@ -30,7 +30,7 @@ async def speak_bhai(text):
     except Exception as e:
         print(f"Voice Error: {e}")
 
-# --- 3. LISTENING ENGINE (Siri Feature) ---
+#3. LISTENING ENGINE (Siri Feature)
 def listen_me():
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
@@ -44,7 +44,7 @@ def listen_me():
     except:
         return ""
 
-# --- 4. APP UI (Text + Voice Combined) ---
+#4. APP UI (Text + Voice Combined)
 class BhaiApp:
     def __init__(self, root, loop):
         self.root = root
@@ -108,7 +108,7 @@ class BhaiApp:
             except:
                 return "Bhai, AI nakhre kar raha hai, ek baar net check kar!"
 
-# --- EXECUTION ---
+#EXECUTION
 if __name__ == "__main__":
     root = tk.Tk()
     new_loop = asyncio.new_event_loop()
@@ -118,4 +118,5 @@ if __name__ == "__main__":
     
     threading.Thread(target=start_loop, args=(new_loop,), daemon=True).start()
     app = BhaiApp(root, new_loop)
+
     root.mainloop()
