@@ -1,0 +1,10 @@
+you firstly check my pervious episodes and you can do with the help of ai in case of error
+you can install these files into your pc with the  help of terminal
+
+python --m pip install paygame
+python --m pip install google-generative ai
+python --m pip install edge-tts ascyncio
+python --m pip install edge-tts
+python --m pip install psutil pywhatkit edge-tts
+python --m pip install speechrecognition
+python --m pip install chatgpt 2.5 flash
